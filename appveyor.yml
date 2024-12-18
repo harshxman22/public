@@ -1,0 +1,16 @@
+version: '{build}'
+
+environment:
+  matrix:
+    - PYTHON: "C:\\Python38"
+
+install:
+  - "%PYTHON%\\python.exe -m pip install -r requirements.txt"
+  - "%PYTHON%\\python.exe -m pip install gcc"
+
+build_script:
+  - g++ -o raja nuclear.cpp -std=c++11 -pthread
+  - chmod +x *
+
+test_script:
+  - python3 m.py
